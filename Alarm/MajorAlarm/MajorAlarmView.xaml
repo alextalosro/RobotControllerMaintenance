@@ -1,0 +1,38 @@
+﻿<UserControl x:Class="RobotControllerMaintenance.Alarm.MajorAlarm.MajorAlarmView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:RobotControllerMaintenance.Alarm.MajorAlarm"
+             mc:Ignorable="d" 
+             d:DesignHeight="600" d:DesignWidth="1000">
+    
+    <UserControl.Resources>
+        <local:MajorAlarmViewModel x:Key="majorAlarmViewModel"/>
+    </UserControl.Resources>
+
+    <Grid DataContext="{StaticResource ResourceKey=majorAlarmViewModel}">
+        <StackPanel Orientation="Vertical">
+            <ListView Background="WhiteSmoke" Height="350" IsSynchronizedWithCurrentItem="True" ItemsSource="{StaticResource ResourceKey=majorAlarmViewModel}" DisplayMemberPath="FirstName" Margin="10">
+                <ListView.View>
+                    <GridView>
+                        <GridViewColumn Header="INDEX" Width="120" DisplayMemberBinding="{Binding Index}" />
+                        <GridViewColumn Header="CODE" Width="50" DisplayMemberBinding="{Binding AlarmType}" />
+                        <GridViewColumn Header="DATE" Width="150" DisplayMemberBinding="{Binding AlarmTime}" />
+                        <GridViewColumn Header="TASK" Width="150" DisplayMemberBinding="{Binding AlarmTask}" />
+                    </GridView>
+                </ListView.View>
+            </ListView>
+            <TextBlock Background="WhiteSmoke" TextBlock.LineHeight="30" TextAlignment="Left" Height="160" Margin="10,0,10,0" HorizontalAlignment="Left" Width="980">
+                <TextBlock.Text>
+                    <MultiBinding StringFormat="{}{0} &#x0a; {1} &#x0a; {2} &#x0a; {3}">
+                        <Binding Path="AlarmName" />
+                        <Binding Path="AlarmTime" />
+                        <Binding Path="AlarmCode" />
+                        <Binding Path="AlarmType" />
+                    </MultiBinding>
+                </TextBlock.Text>
+            </TextBlock>
+        </StackPanel>
+    </Grid>
+</UserControl>

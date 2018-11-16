@@ -1,0 +1,52 @@
+﻿<UserControl x:Class="RobotControllerMaintenance.Alarm.AlarmView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:RobotControllerMaintenance.Alarm"
+             xmlns:local2="clr-namespace:RobotControllerMaintenance.Alarm.MajorAlarm"
+             xmlns:local3="clr-namespace:RobotControllerMaintenance.Alarm.MinorAlarm"
+             xmlns:local4="clr-namespace:RobotControllerMaintenance.Alarm.OfflineAlarm"
+             xmlns:local5="clr-namespace:RobotControllerMaintenance.Alarm.SystemUserAlarm"
+             xmlns:local6="clr-namespace:RobotControllerMaintenance.Alarm.UserUserAlarm"
+             mc:Ignorable="d" 
+             d:DesignHeight="600" d:DesignWidth="1000">
+    
+    <UserControl.Resources>
+        <DataTemplate DataType="{x:Type local2:MajorAlarmViewModel}">
+            <local2:MajorAlarmView />
+        </DataTemplate>
+        <DataTemplate DataType="{x:Type local3:MinorAlarmViewModel}">
+            <local3:MinorAlarmView />
+        </DataTemplate>
+        <DataTemplate DataType="{x:Type local4:OfflineAlarmViewModel}">
+            <local4:OfflineAlarmView/>
+        </DataTemplate>
+        <DataTemplate DataType="{x:Type local5:SystemUserAlarmViewModel}">
+            <local5:SystemUserAlarmView/>
+        </DataTemplate>
+        <DataTemplate DataType="{x:Type local6:UserUserAlarmViewModel}">
+            <local6:UserUserAlarmView/>
+        </DataTemplate>
+    </UserControl.Resources>
+
+    
+    <DockPanel>
+
+        <Border DockPanel.Dock="Left" BorderBrush="Black" BorderThickness="0,0,1,0">
+            <ItemsControl ItemsSource="{Binding AlarmViewModels}">
+                <ItemsControl.ItemTemplate>
+                    <DataTemplate>
+                        <Button Content="{Binding Name}"
+                                Command="{Binding DataContext.ChangePageCommand, RelativeSource={RelativeSource AncestorType={x:Type UserControl}}}"
+                                CommandParameter="{Binding }"
+                                Margin="2,5"/>
+                    </DataTemplate>
+                </ItemsControl.ItemTemplate>
+            </ItemsControl>
+        </Border>
+
+        <ContentControl Content="{Binding CurrentPageViewModel}" />
+
+    </DockPanel>
+</UserControl>

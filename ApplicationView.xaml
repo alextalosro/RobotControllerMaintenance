@@ -1,0 +1,55 @@
+﻿<Window x:Class="RobotControllerMaintenance.ApplicationView"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:local="clr-namespace:RobotControllerMaintenance"
+        xmlns:local2="clr-namespace:RobotControllerMaintenance.Alarm.MajorAlarm"
+        xmlns:local3="clr-namespace:RobotControllerMaintenance.Alarm.MinorAlarm"
+        xmlns:local4="clr-namespace:RobotControllerMaintenance.Alarm"
+        xmlns:local5="clr-namespace:RobotControllerMaintenance"
+        xmlns:local6="clr-namespace:RobotControllerMaintenance.Status"
+        xmlns:local7="clr-namespace:RobotControllerMaintenance.Variable"
+        Title="Robot Controller Maintenance" Height="600" Width="1000">
+
+    <Window.Resources>
+        <DataTemplate DataType="{x:Type local:StatusViewModel}">
+            <local:StatusView />
+        </DataTemplate>
+        <DataTemplate DataType="{x:Type local:ProductsViewModel}">
+            <local5:ProductsView />
+        </DataTemplate>
+        <DataTemplate DataType="{x:Type local4:AlarmViewModel}">
+            <local4:AlarmView/>
+        </DataTemplate>
+        <DataTemplate DataType="{x:Type local7:VariableViewModel}">
+            <local7:VariableView/>
+        </DataTemplate>
+    </Window.Resources>
+
+    <StackPanel>
+        <Grid Background="LightGray" VerticalAlignment="Top" HorizontalAlignment="Left" Height="30" Width="990">
+            <StackPanel>
+                <ItemsControl ItemsSource="{Binding PageViewModels}"  >
+                    <ItemsControl.ItemsPanel>
+                        <ItemsPanelTemplate>
+                            <!-- Here is the panel that will contain the items -->
+                            <StackPanel Orientation="Horizontal"/>
+                        </ItemsPanelTemplate>
+                    </ItemsControl.ItemsPanel>
+                    <ItemsControl.ItemTemplate>
+                        <DataTemplate>
+                            <Button Content="{Binding Name}"
+                                Command="{Binding DataContext.ChangePageCommand, RelativeSource={RelativeSource AncestorType={x:Type Window}}}"
+                                CommandParameter="{Binding }"
+                                Margin="2,5"/>
+                        </DataTemplate>
+                    </ItemsControl.ItemTemplate>
+                </ItemsControl>
+            </StackPanel>
+            
+        </Grid>
+        <Grid>
+            <ContentControl Content="{Binding CurrentPageViewModel}" />
+        </Grid>
+    </StackPanel>
+   
+</Window>

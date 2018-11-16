@@ -1,0 +1,51 @@
+﻿<UserControl x:Class="RobotControllerMaintenance.Variable.VariableView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:RobotControllerMaintenance.Variable"
+              xmlns:local2="clr-namespace:RobotControllerMaintenance.Variable.Byte"
+             xmlns:local3="clr-namespace:RobotControllerMaintenance.Variable.Double"
+             xmlns:local4="clr-namespace:RobotControllerMaintenance.Variable.Integer"
+             xmlns:local5="clr-namespace:RobotControllerMaintenance.Variable.Real"
+             xmlns:local6="clr-namespace:RobotControllerMaintenance.Variable.Register"
+             mc:Ignorable="d" 
+             d:DesignHeight="450" d:DesignWidth="800">
+    <UserControl.Resources>
+        <DataTemplate DataType="{x:Type local2:ByteViewModel}">
+            <local2:ByteView />
+        </DataTemplate>
+        <DataTemplate DataType="{x:Type local3:DoubleViewModel}">
+            <local3:DoubleView />
+        </DataTemplate>
+        <DataTemplate DataType="{x:Type local4:IntegerViewModel}">
+            <local4:IntegerView/>
+        </DataTemplate>
+        <DataTemplate DataType="{x:Type local5:RealViewModel}">
+            <local5:RealView/>
+        </DataTemplate>
+        <DataTemplate DataType="{x:Type local6:RegisterViewModel}">
+            <local6:RegisterView/>
+        </DataTemplate>
+    </UserControl.Resources>
+
+
+    <DockPanel>
+
+        <Border DockPanel.Dock="Left" BorderBrush="Black" BorderThickness="0,0,1,0">
+            <ItemsControl ItemsSource="{Binding VariableViewModels}">
+                <ItemsControl.ItemTemplate>
+                    <DataTemplate>
+                        <Button Content="{Binding Name}"
+                                Command="{Binding DataContext.ChangePageCommand, RelativeSource={RelativeSource AncestorType={x:Type UserControl}}}"
+                                CommandParameter="{Binding }"
+                                Margin="2,5"/>
+                    </DataTemplate>
+                </ItemsControl.ItemTemplate>
+            </ItemsControl>
+        </Border>
+
+        <ContentControl Content="{Binding CurrentPageViewModel}" />
+
+    </DockPanel>
+</UserControl>
