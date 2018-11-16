@@ -15,6 +15,9 @@ namespace RobotControllerMaintenance.Alarm.MajorAlarm
                 return "Major Alarm";
             }
         }
+        /// <summary>
+        /// asd
+        /// </summary>
         //Constructor
         #region Constructor
         public MajorAlarmViewModel()
