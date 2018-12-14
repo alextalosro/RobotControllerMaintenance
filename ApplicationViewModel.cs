@@ -1,4 +1,8 @@
-﻿using System;
+﻿using RobotControllerMaintenance.Alarm;
+using RobotControllerMaintenance.Helper_Classes;
+using RobotControllerMaintenance.TopMenu;
+using RobotControllerMaintenance.Variable;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -6,7 +10,7 @@ using System.Windows.Input;
 
 namespace RobotControllerMaintenance
 {
-    public class ApplicationViewModel : ObservableObject
+    public class ApplicationViewModel : ViewModelBase
     {
         #region Fields
 
@@ -22,8 +26,9 @@ namespace RobotControllerMaintenance
             // Add available pages
             PageViewModels.Add(new StatusViewModel());
             PageViewModels.Add(new ProductsViewModel());
-            PageViewModels.Add(new Alarm.AlarmViewModel());
-            PageViewModels.Add(new Variable.VariableViewModel());
+            PageViewModels.Add(new AlarmViewModel());
+            PageViewModels.Add(new VariableViewModel());
+            PageViewModels.Add(new TopMenuViewModel());
 
             // Set starting page
             CurrentPageViewModel = PageViewModels[0];

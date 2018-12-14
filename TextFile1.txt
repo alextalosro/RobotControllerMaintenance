@@ -1,0 +1,4 @@
+De adaugat Paginile ce sunt afisate in meniu de sus inapplication view.
+ Trebuie gasita o modalitate.
+
+ top menu view model trebuie adaugat in datatemplate in appview si folosit in gridul respectiv.

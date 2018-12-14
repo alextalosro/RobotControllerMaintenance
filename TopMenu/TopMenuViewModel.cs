@@ -1,30 +1,36 @@
 ﻿using RobotControllerMaintenance.Helper_Classes;
+using RobotControllerMaintenance.TopMenu.About;
+using RobotControllerMaintenance.TopMenu.Login;
 using System.Collections.Generic;
 using System.Linq;
 using System.Windows.Input;
 
-namespace RobotControllerMaintenance.Alarm
+namespace RobotControllerMaintenance.TopMenu
 {
-    class AlarmViewModel : ViewModelBase, IPageViewModel
+    public class TopMenuViewModel : ViewModelBase
     {
         #region Fields
+
         private ICommand _changePageCommand;
+
         private IPageViewModel _currentPageViewModel;
         private List<IPageViewModel> _pageViewModels;
+
         #endregion
-        public AlarmViewModel()
+
+        public TopMenuViewModel()
         {
             // Add available pages
-            AlarmViewModels.Add(new MajorAlarm.MajorAlarmViewModel());
-            AlarmViewModels.Add(new MinorAlarm.MinorAlarmViewModel());
-            AlarmViewModels.Add(new OfflineAlarm.OfflineAlarmViewModel());
-            AlarmViewModels.Add(new SystemUserAlarm.SystemUserAlarmViewModel());
-            AlarmViewModels.Add(new UserUserAlarm.UserUserAlarmViewModel());
+            PageViewModels.Add(new LogInViewModel());
+            PageViewModels.Add(new AboutViewModel());
+
 
             // Set starting page
-            CurrentPageViewModel = AlarmViewModels[0];
+            CurrentPageViewModel = PageViewModels[0];
         }
+
         #region Properties / Commands
+
         public ICommand ChangePageCommand
         {
             get
@@ -39,14 +45,8 @@ namespace RobotControllerMaintenance.Alarm
                 return _changePageCommand;
             }
         }
-        public string Name
-        {
-            get
-            {
-                return "Alarm";
-            }
-        }
-        public List<IPageViewModel> AlarmViewModels
+
+        public List<IPageViewModel> PageViewModels
         {
             get
             {
@@ -56,6 +56,7 @@ namespace RobotControllerMaintenance.Alarm
                 return _pageViewModels;
             }
         }
+
         public IPageViewModel CurrentPageViewModel
         {
             get
@@ -71,16 +72,20 @@ namespace RobotControllerMaintenance.Alarm
                 }
             }
         }
+
         #endregion
+
         #region Methods
+
         private void ChangeViewModel(IPageViewModel viewModel)
         {
-            if (!AlarmViewModels.Contains(viewModel))
-                AlarmViewModels.Add(viewModel);
+            if (!PageViewModels.Contains(viewModel))
+                PageViewModels.Add(viewModel);
 
-            CurrentPageViewModel = AlarmViewModels
+            CurrentPageViewModel = PageViewModels
                 .FirstOrDefault(vm => vm == viewModel);
         }
+
         #endregion
     }
 }

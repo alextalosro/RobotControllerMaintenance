@@ -23,33 +23,42 @@
         <DataTemplate DataType="{x:Type local7:VariableViewModel}">
             <local7:VariableView/>
         </DataTemplate>
+ 
     </Window.Resources>
+    
+    <Grid ShowGridLines="False">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="30"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="Auto"/>
+            <ColumnDefinition Width="*"/>
+        </Grid.ColumnDefinitions>
 
-    <StackPanel>
-        <Grid Background="LightGray" VerticalAlignment="Top" HorizontalAlignment="Left" Height="30" Width="990">
-            <StackPanel>
-                <ItemsControl ItemsSource="{Binding PageViewModels}"  >
-                    <ItemsControl.ItemsPanel>
-                        <ItemsPanelTemplate>
-                            <!-- Here is the panel that will contain the items -->
-                            <StackPanel Orientation="Horizontal"/>
-                        </ItemsPanelTemplate>
-                    </ItemsControl.ItemsPanel>
-                    <ItemsControl.ItemTemplate>
-                        <DataTemplate>
-                            <Button Content="{Binding Name}"
+        <StackPanel Grid.Row="1">
+            <ItemsControl ItemsSource="{Binding PageViewModels}"  >
+                <ItemsControl.ItemsPanel>
+                    <ItemsPanelTemplate>
+                        <!-- Here is the panel that will contain the items -->
+                        <StackPanel  Orientation="Vertical"/>
+                    </ItemsPanelTemplate>
+                </ItemsControl.ItemsPanel>
+                <ItemsControl.ItemTemplate>
+                    <DataTemplate>
+                        <Button Content="{Binding Name}"
                                 Command="{Binding DataContext.ChangePageCommand, RelativeSource={RelativeSource AncestorType={x:Type Window}}}"
                                 CommandParameter="{Binding }"
                                 Margin="2,5"/>
-                        </DataTemplate>
-                    </ItemsControl.ItemTemplate>
-                </ItemsControl>
-            </StackPanel>
-            
-        </Grid>
-        <Grid>
+                    </DataTemplate>
+                </ItemsControl.ItemTemplate>
+            </ItemsControl>
+        </StackPanel>
+
+        <Grid Grid.Row="1" Grid.Column="1">
             <ContentControl Content="{Binding CurrentPageViewModel}" />
         </Grid>
-    </StackPanel>
-   
+        
+    </Grid>
+    
 </Window>

@@ -23,7 +23,7 @@
                     </GridView>
                 </ListView.View>
             </ListView>
-            <TextBlock Background="WhiteSmoke" TextBlock.LineHeight="30" TextAlignment="Left" Height="160" Margin="10,0,10,0" HorizontalAlignment="Left" Width="980">
+            <TextBlock TextBlock.LineHeight="30" TextAlignment="Left" Height="160" Margin="10,0,10,0" HorizontalAlignment="Left" FontWeight="Black">
                 <TextBlock.Text>
                     <MultiBinding StringFormat="{}{0} &#x0a; {1} &#x0a; {2} &#x0a; {3}">
                         <Binding Path="AlarmName" />
