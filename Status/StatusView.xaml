@@ -10,7 +10,7 @@
             <local:StatusViewModel x:Key="statusViewModel"/>
         </UserControl.Resources>
 
-    <Grid Background="LightGray">
+    <Grid>
         <StackPanel>
             <Grid>
                 <ItemsControl ItemsSource="{DynamicResource statusViewModel}">

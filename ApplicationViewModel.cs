@@ -28,7 +28,6 @@ namespace RobotControllerMaintenance
             PageViewModels.Add(new ProductsViewModel());
             PageViewModels.Add(new AlarmViewModel());
             PageViewModels.Add(new VariableViewModel());
-            PageViewModels.Add(new TopMenuViewModel());
 
             // Set starting page
             CurrentPageViewModel = PageViewModels[0];
