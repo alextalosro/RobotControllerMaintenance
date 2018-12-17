@@ -15,14 +15,16 @@ namespace RobotControllerMaintenance.Alarm.UserUserAlarm
                 return "User(User) Alarm";
             }
         }
-        #region Constructor
+
         public UserUserAlarmViewModel()
         {
             PrepareAlarmCollection();
         }
-        #endregion
+
         private void PrepareAlarmCollection()
         {
+
+
             UserUserAlarmModel alarm1 = new UserUserAlarmModel
             {
 

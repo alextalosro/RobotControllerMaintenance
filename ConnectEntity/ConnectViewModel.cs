@@ -1,18 +1,19 @@
-﻿using System;
+﻿using RobotControllerMaintenance.Helper_Classes;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace RobotControllerMaintenance.TopMenu.Login
+namespace RobotControllerMaintenance.ConnectEntity
 {
-    class LogInViewModel : IPageViewModel
+    class ConnectViewModel : ViewModelBase, IPageViewModel
     {
         public string Name
         {
             get
             {
-                return "Alarm";
+                return "Connect";
             }
         }
     }

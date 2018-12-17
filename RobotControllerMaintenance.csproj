@@ -49,6 +49,9 @@
     <Prefer32Bit>false</Prefer32Bit>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="Prism, Version=7.1.0.431, Culture=neutral, PublicKeyToken=40ee6c3a2184dc59, processorArchitecture=MSIL">
+      <HintPath>packages\Prism.Core.7.1.0.431\lib\net45\Prism.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Data" />
     <Reference Include="System.Xml" />
@@ -99,6 +102,11 @@
     </Compile>
     <Compile Include="Alarm\UserUserAlarm\UserUserAlarmViewModel.cs" />
     <Compile Include="ApplicationViewModel.cs" />
+    <Compile Include="ConnectEntity\ConnectModel.cs" />
+    <Compile Include="ConnectEntity\ConnectView.xaml.cs">
+      <DependentUpon>ConnectView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="ConnectEntity\ConnectViewModel.cs" />
     <Compile Include="Helper Classes\ObservableObject.cs" />
     <Compile Include="Helper Classes\ViewModelBase.cs" />
     <Compile Include="StatusControl\Status\StatusView.xaml.cs">
@@ -118,15 +126,6 @@
       <DependentUpon>AboutView.xaml</DependentUpon>
     </Compile>
     <Compile Include="TopMenu\About\AboutViewModel.cs" />
-    <Compile Include="TopMenu\Login\LogInModel.cs" />
-    <Compile Include="TopMenu\Login\LogInView.xaml.cs">
-      <DependentUpon>LogInView.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="TopMenu\Login\LogInViewModel.cs" />
-    <Compile Include="TopMenu\TopMenuView.xaml.cs">
-      <DependentUpon>TopMenuView.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="TopMenu\TopMenuViewModel.cs" />
     <Compile Include="Variable\Byte\ByteModel.cs" />
     <Compile Include="Variable\Byte\ByteView.xaml.cs">
       <DependentUpon>ByteView.xaml</DependentUpon>
@@ -186,6 +185,10 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="ConnectEntity\ConnectView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="StatusControl\Status\StatusView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -207,14 +210,6 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="TopMenu\About\AboutView.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="TopMenu\Login\LogInView.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="TopMenu\TopMenuView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -266,6 +261,7 @@
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
     <None Include="app.config" />
+    <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>

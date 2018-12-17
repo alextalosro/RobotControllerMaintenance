@@ -12,7 +12,7 @@ namespace RobotControllerMaintenance.TopMenu.About
         {
             get
             {
-                return "Alarm";
+                return "About";
             }
         }
     }      

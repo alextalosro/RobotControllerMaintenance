@@ -1,11 +1,12 @@
-﻿using RobotControllerMaintenance.Alarm;
+﻿using Prism.Commands;
+using RobotControllerMaintenance.Alarm;
+using RobotControllerMaintenance.ConnectEntity;
 using RobotControllerMaintenance.Helper_Classes;
-using RobotControllerMaintenance.TopMenu;
+using RobotControllerMaintenance.TopMenu.About;
 using RobotControllerMaintenance.Variable;
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
 using System.Windows.Input;
 
 namespace RobotControllerMaintenance
@@ -15,9 +16,11 @@ namespace RobotControllerMaintenance
         #region Fields
 
         private ICommand _changePageCommand;
+        private ICommand _changeManuCommand;
 
         private IPageViewModel _currentPageViewModel;
         private List<IPageViewModel> _pageViewModels;
+        private List<IPageViewModel> _menuViewModels;
 
         #endregion
 
@@ -29,12 +32,42 @@ namespace RobotControllerMaintenance
             PageViewModels.Add(new AlarmViewModel());
             PageViewModels.Add(new VariableViewModel());
 
+            MenuViewModels.Add(new ConnectViewModel());
+            MenuViewModels.Add(new AboutViewModel());
+
             // Set starting page
-            CurrentPageViewModel = PageViewModels[0];
+            CurrentPageViewModel = MenuViewModels[0];
+
+            //ConnectCommand = new DelegateCommand(OnConnectExecute, OnConnectCanExecute);
         }
 
-        #region Properties / Commands
+        //private void OnConnectExecute()
+        //{
+        //    CurrentPageViewModel = PageViewModels[0];
+        //}
 
+        //private bool OnConnectCanExecute()
+        //{
+        //    //TO DO. Verify If connect is valid.
+        //    return true;
+        //}
+
+        public ICommand ConnectCommand { get; set; }
+
+        public ICommand ChangeMenuCommand
+        {
+            get
+            {
+                if (_changeManuCommand == null)
+                {
+                    _changeManuCommand = new RelayCommand(
+                        p => ChangeMenuViewModel((IPageViewModel)p),
+                        p => p is IPageViewModel);
+                }
+
+                return _changeManuCommand;
+            }
+        }
         public ICommand ChangePageCommand
         {
             get
@@ -47,6 +80,17 @@ namespace RobotControllerMaintenance
                 }
 
                 return _changePageCommand;
+            }
+        }
+
+        public List<IPageViewModel> MenuViewModels
+        {
+            get
+            {
+                if (_menuViewModels == null)
+                    _menuViewModels = new List<IPageViewModel>();
+
+                return _menuViewModels;
             }
         }
 
@@ -77,10 +121,6 @@ namespace RobotControllerMaintenance
             }
         }
 
-        #endregion
-
-        #region Methods
-
         private void ChangeViewModel(IPageViewModel viewModel)
         {
             if (!PageViewModels.Contains(viewModel))
@@ -90,6 +130,14 @@ namespace RobotControllerMaintenance
                 .FirstOrDefault(vm => vm == viewModel);
         }
 
-        #endregion
+        private void ChangeMenuViewModel(IPageViewModel viewModel)
+        {
+            if (!PageViewModels.Contains(viewModel))
+                PageViewModels.Add(viewModel);
+
+            CurrentPageViewModel = PageViewModels
+                .FirstOrDefault(vm => vm == viewModel);
+        }
+
     }
 }
