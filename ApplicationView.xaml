@@ -26,7 +26,7 @@
  
     </Window.Resources>
     
-    <Grid ShowGridLines="True">
+    <Grid ShowGridLines="False">
         <Grid.RowDefinitions>
             <RowDefinition Height="30"/>
             <RowDefinition Height="*"/>
@@ -35,6 +35,12 @@
             <ColumnDefinition Width="Auto"/>
             <ColumnDefinition Width="*"/>
         </Grid.ColumnDefinitions>
+        
+        <StackPanel Orientation="Horizontal" Grid.Column="0" Grid.ColumnSpan="2">
+            <Button Content="Connect" Grid.Row="0" Grid.Column="1" Width="100" Margin="2,5" HorizontalAlignment="Left"/>
+            <Button Content="About" Grid.Row="0" Grid.Column="1" Width="100" Margin="2,5" HorizontalAlignment="Left"/>
+        </StackPanel>
+
 
         <StackPanel Grid.Row="1">
             <ItemsControl ItemsSource="{Binding PageViewModels}"  >

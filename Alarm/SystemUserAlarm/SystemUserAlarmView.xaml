@@ -6,32 +6,38 @@
              xmlns:local="clr-namespace:RobotControllerMaintenance.Alarm.SystemUserAlarm"
              mc:Ignorable="d" 
              d:DesignHeight="600" d:DesignWidth="1000">
+
     <UserControl.Resources>
         <local:SystemUserAlarmViewModel x:Key="systemUserAlarmViewModel"/>
     </UserControl.Resources>
 
-    <Grid DataContext="{StaticResource ResourceKey=systemUserAlarmViewModel}">
-        <StackPanel Orientation="Vertical">
-            <ListView Background="WhiteSmoke" Height="350" IsSynchronizedWithCurrentItem="True" ItemsSource="{StaticResource ResourceKey=systemUserAlarmViewModel}" DisplayMemberPath="FirstName" Margin="10">
-                <ListView.View>
-                    <GridView>
-                        <GridViewColumn Header="INDEX" Width="120" DisplayMemberBinding="{Binding Index}" />
-                        <GridViewColumn Header="CODE" Width="50" DisplayMemberBinding="{Binding AlarmType}" />
-                        <GridViewColumn Header="DATE" Width="150" DisplayMemberBinding="{Binding AlarmTime}" />
-                        <GridViewColumn Header="TASK" Width="150" DisplayMemberBinding="{Binding AlarmTask}" />
-                    </GridView>
-                </ListView.View>
-            </ListView>
-            <TextBlock Background="WhiteSmoke" TextAlignment="Left" Height="160" Margin="10,0,10,0" HorizontalAlignment="Left" Width="980">
-                <TextBlock.Text>
-                    <MultiBinding StringFormat="{}{0} &#x0a; {1} &#x0a; {2} &#x0a; {3}">
-                        <Binding Path="AlarmName" />
-                        <Binding Path="AlarmTime" />
-                        <Binding Path="AlarmCode" />
-                        <Binding Path="AlarmType" />
-                    </MultiBinding>
-                </TextBlock.Text>
-            </TextBlock>
-        </StackPanel>
+    <Grid ShowGridLines="False" DataContext="{StaticResource ResourceKey=systemUserAlarmViewModel}">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="700"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+
+
+        <ListView Grid.Row="0" Background="WhiteSmoke" IsSynchronizedWithCurrentItem="True" ItemsSource="{StaticResource ResourceKey=systemUserAlarmViewModel}" DisplayMemberPath="FirstName" Margin="1">
+            <ListView.View>
+                <GridView>
+                    <GridViewColumn Header="INDEX" Width="120" DisplayMemberBinding="{Binding Index}" />
+                    <GridViewColumn Header="CODE" Width="50" DisplayMemberBinding="{Binding AlarmType}" />
+                    <GridViewColumn Header="DATE" Width="150" DisplayMemberBinding="{Binding AlarmTime}" />
+                    <GridViewColumn Header="TASK" Width="150" DisplayMemberBinding="{Binding AlarmTask}" />
+                </GridView>
+            </ListView.View>
+        </ListView>
+        <TextBlock Grid.Row="1" TextBlock.LineHeight="30" TextAlignment="Left" Margin="10,0,10,0" HorizontalAlignment="Left" FontWeight="Black">
+            <TextBlock.Text>
+                <MultiBinding StringFormat="{}{0} &#x0a; {1} &#x0a; {2} &#x0a; {3}">
+                    <Binding Path="AlarmName" />
+                    <Binding Path="AlarmTime" />
+                    <Binding Path="AlarmCode" />
+                    <Binding Path="AlarmType" />
+                </MultiBinding>
+            </TextBlock.Text>
+        </TextBlock>
+
     </Grid>
 </UserControl>

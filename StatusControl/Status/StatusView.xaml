@@ -12,7 +12,7 @@
 
     <Grid>
         <StackPanel>
-            <Grid>
+            <Grid Margin="2,5">
                 <ItemsControl ItemsSource="{DynamicResource statusViewModel}">
                     <ItemsControl.ItemsPanel>
                         <ItemsPanelTemplate>

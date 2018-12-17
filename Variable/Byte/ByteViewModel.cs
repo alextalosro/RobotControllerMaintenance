@@ -1,14 +1,10 @@
-﻿using RobotControllerMaintenance.Alarm.MajorAlarm;
-using System;
-using System.Collections.Generic;
+﻿using RobotControllerMaintenance.Helper_Classes;
 using System.Collections.ObjectModel;
-using System.Linq;
-using System.Text;
 using System.Windows.Input;
 
 namespace RobotControllerMaintenance.Variable.Byte
 {
-    class ByteViewModel : ObservableObject, IPageViewModel
+    class ByteViewModel : ViewModelBase, IPageViewModel
     {
         public string Name
         {

@@ -11,9 +11,14 @@
         <local:MajorAlarmViewModel x:Key="majorAlarmViewModel"/>
     </UserControl.Resources>
 
-    <Grid DataContext="{StaticResource ResourceKey=majorAlarmViewModel}">
-        <StackPanel Orientation="Vertical">
-            <ListView Background="WhiteSmoke" Height="350" IsSynchronizedWithCurrentItem="True" ItemsSource="{StaticResource ResourceKey=majorAlarmViewModel}" DisplayMemberPath="FirstName" Margin="10">
+    <Grid ShowGridLines="False" DataContext="{StaticResource ResourceKey=majorAlarmViewModel}">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="700"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+        
+
+            <ListView Grid.Row="0" Background="WhiteSmoke" IsSynchronizedWithCurrentItem="True" ItemsSource="{StaticResource ResourceKey=majorAlarmViewModel}" DisplayMemberPath="FirstName" Margin="1">
                 <ListView.View>
                     <GridView>
                         <GridViewColumn Header="INDEX" Width="120" DisplayMemberBinding="{Binding Index}" />
@@ -23,7 +28,7 @@
                     </GridView>
                 </ListView.View>
             </ListView>
-            <TextBlock TextBlock.LineHeight="30" TextAlignment="Left" Height="160" Margin="10,0,10,0" HorizontalAlignment="Left" FontWeight="Black">
+            <TextBlock Grid.Row="1" TextBlock.LineHeight="30" TextAlignment="Left" Margin="10,0,10,0" HorizontalAlignment="Left" FontWeight="Black">
                 <TextBlock.Text>
                     <MultiBinding StringFormat="{}{0} &#x0a; {1} &#x0a; {2} &#x0a; {3}">
                         <Binding Path="AlarmName" />
@@ -33,6 +38,6 @@
                     </MultiBinding>
                 </TextBlock.Text>
             </TextBlock>
-        </StackPanel>
+
     </Grid>
 </UserControl>

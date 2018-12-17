@@ -10,18 +10,14 @@ namespace RobotControllerMaintenance
 {
     public class StatusViewModel : ObservableCollection<StatusModel>, IPageViewModel
     {
-        #region Fields
-        #endregion
 
-        #region Properties
         public string Name
         {
             get
             {
-                return "Controller Status";
+                return "Controller";
             }
         }
-        #endregion
 
 
         public StatusViewModel()

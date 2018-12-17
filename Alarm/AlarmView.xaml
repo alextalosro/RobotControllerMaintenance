@@ -33,7 +33,7 @@
     
     <DockPanel>
 
-        <Border DockPanel.Dock="Left" BorderBrush="Black" BorderThickness="0,0,1,0">
+        <Border DockPanel.Dock="Left" BorderBrush="Black" BorderThickness="0">
             <ItemsControl ItemsSource="{Binding AlarmViewModels}">
                 <ItemsControl.ItemTemplate>
                     <DataTemplate>
@@ -45,8 +45,8 @@
                 </ItemsControl.ItemTemplate>
             </ItemsControl>
         </Border>
-
+        <Border BorderBrush="Gray" BorderThickness="3,3,3,3">
         <ContentControl Content="{Binding CurrentPageViewModel}" />
-
+        </Border>
     </DockPanel>
 </UserControl>

@@ -49,10 +49,6 @@
     <Prefer32Bit>false</Prefer32Bit>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="HighSpeedEthernetClient, Version=0.4.3.9, Culture=neutral, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>C:\Users\a.talos\Downloads\HighSpeedEthernetClient.dll</HintPath>
-    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Data" />
     <Reference Include="System.Xml" />
@@ -105,11 +101,11 @@
     <Compile Include="ApplicationViewModel.cs" />
     <Compile Include="Helper Classes\ObservableObject.cs" />
     <Compile Include="Helper Classes\ViewModelBase.cs" />
-    <Compile Include="Status\StatusView.xaml.cs">
+    <Compile Include="StatusControl\Status\StatusView.xaml.cs">
       <DependentUpon>StatusView.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Status\StatusViewModel.cs" />
-    <Compile Include="Status\StatusModel.cs" />
+    <Compile Include="StatusControl\Status\StatusViewModel.cs" />
+    <Compile Include="StatusControl\Status\StatusModel.cs" />
     <Compile Include="Products\ProductModel.cs" />
     <Compile Include="Helper Classes\RelayCommand.cs" />
     <Compile Include="Products\ProductsView.xaml.cs">
@@ -190,7 +186,7 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Status\StatusView.xaml">
+    <Page Include="StatusControl\Status\StatusView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -276,7 +272,9 @@
     </None>
     <AppDesigner Include="Properties\" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <Folder Include="StatusControl\Control\" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.
